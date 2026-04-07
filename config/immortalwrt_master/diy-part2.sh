@@ -53,13 +53,8 @@ git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
 # git apply ../config/patches/{0001*,0002*}.patch --directory=feeds/luci
 #
 # ------------------------------- Additional customizations ends -------------------------------
-# Клонируем AmneziaWG из исходников
-git clone https://github.com/Slava-Shchipunov/awg-openwrt.git package/amneziawg
 
-# Добавляем фиды для zapret и podkop
-echo 'src-git zapret https://github.com/remittor/zapret-openwrt.git' >> feeds.conf
-echo 'src-git podkop https://github.com/itdoginfo/podkop.git' >> feeds.conf
-
-# Обновляем фиды
-./scripts/feeds update -a
-./scripts/feeds install -a
+echo "CONFIG_PACKAGE_kmod-amneziawg=y" >> .config
+echo "CONFIG_PACKAGE_amneziawg-tools=y" >> .config
+echo "CONFIG_PACKAGE_luci-app-amneziawg=y" >> .config
+echo "CONFIG_PACKAGE_luci-i18n-amneziawg-ru=y" >> .config
